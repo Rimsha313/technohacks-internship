@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+int rollDice() {
+    return rand() % 6 + 1; // Generate a random number between 1 and 6
+}
+
+void displayResult(int die1, int die2) {
+    cout << "You rolled a " << die1 << " and a " << die2 << "." << endl;
+    cout << "Total: " << die1 + die2 << endl;
+}
+
+int main() {
+    srand(time(0)); // Seed the random number generator with the current time
+
+    cout << "Welcome to the Dice Rolling Simulator!" << endl;
+
+    char playAgain;
+    do {
+        cout << "Press Enter to roll the dice...";
+        cin.ignore(); // Ignore any previous newline character in the input buffer
+        int die1 = rollDice();
+        int die2 = rollDice();
+        displayResult(die1, die2);
+
+        cout << "Do you want to roll again? (yes/no): ";
+        cin >> playAgain;
+
+    } while (playAgain == 'y' || playAgain == 'Y');
+
+    cout << "Thanks for playing! Goodbye." << endl;
+
+    return 0;
+}
